@@ -1,0 +1,53 @@
+
+# =========================
+# Java / Spring Boot
+# =========================
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+
+# =========================
+# IDE
+# =========================
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# =========================
+# React
+# =========================
+node_modules/
+build/
+dist/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Operating System
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Docker
+# =========================
+postgres-data/

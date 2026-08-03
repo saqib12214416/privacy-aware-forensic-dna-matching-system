@@ -1,0 +1,23 @@
+server:
+  port: 8000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dna_forensics
+    username: dna_admin
+    password: dna_admin
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+jwt:
+  secret: dev-secret-key-dev-secret-key-dev-secret-key
+  expiration: 7200000
+
+
+springdoc:
+  swagger-ui:
+    tagsSorter: none
+    operationsSorter: none

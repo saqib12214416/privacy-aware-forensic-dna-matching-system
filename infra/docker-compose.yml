@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    container_name: dna_pg
+    environment:
+      POSTGRES_DB: dna_forensics
+      POSTGRES_USER: dna_admin
+      POSTGRES_PASSWORD: dna_admin
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - ../data:/app/data
+    ports:
+      - "5432:5432"
+
+  api:
+    build:
+      context: ../forensic_dna_spring_backend
+      dockerfile: Dockerfile
+    container_name: dna_spring_api
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/dna_forensics
+      SPRING_DATASOURCE_USERNAME: dna_admin
+      SPRING_DATASOURCE_PASSWORD: dna_admin
+    volumes:
+      - ../data:/app/data
+    ports:
+      - "8000:8000"
