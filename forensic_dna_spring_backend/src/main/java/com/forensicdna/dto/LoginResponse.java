@@ -8,19 +8,15 @@ public class LoginResponse {
 
     private String email;
 
-    private String role;
-
 
 
     public LoginResponse(
             String token,
-            String email,
-            String role
+            String email
     ){
 
         this.token = token;
         this.email = email;
-        this.role = role;
 
     }
 
@@ -35,9 +31,5 @@ public class LoginResponse {
         return email;
     }
 
-
-    public String getRole() {
-        return role;
-    }
 
 }

@@ -18,14 +18,21 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http
+    ) throws Exception {
 
         http
                 .csrf(csrf -> csrf.disable())
+
                 .cors(Customizer.withDefaults())
+
                 .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        session.sessionCreationPolicy(
+                                SessionCreationPolicy.STATELESS
+                        )
                 )
+
                 .authorizeHttpRequests(auth -> auth
 
                         .requestMatchers(
@@ -35,12 +42,25 @@ public class SecurityConfig {
                                 "/v3/api-docs/**"
                         ).permitAll()
 
-                        .requestMatchers("/import/**").permitAll()
+                        .requestMatchers(
+                                "/import/**"
+                        ).permitAll()
 
-                        .requestMatchers("/profiles/**").authenticated()
-                        .requestMatchers("/evidence/**").authenticated()
-                        .requestMatchers("/matches/**").authenticated()
-                        .requestMatchers("/feedback/**").authenticated()
+                        .requestMatchers(
+                                "/profiles/**"
+                        ).authenticated()
+
+                        .requestMatchers(
+                                "/evidence/**"
+                        ).authenticated()
+
+                        .requestMatchers(
+                                "/matches/**"
+                        ).authenticated()
+
+                        .requestMatchers(
+                                "/feedback/**"
+                        ).authenticated()
 
                         .anyRequest().authenticated()
                 )

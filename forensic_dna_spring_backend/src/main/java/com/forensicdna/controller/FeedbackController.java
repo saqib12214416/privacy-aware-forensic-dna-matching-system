@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 import org.springframework.web.multipart.MultipartFile;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.*;
@@ -14,6 +16,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/feedback")
 @CrossOrigin(origins = "http://localhost:5173")
+@SecurityRequirement(name = "bearerAuth")
 public class FeedbackController {
 
     private final FeedbackService feedbackService;

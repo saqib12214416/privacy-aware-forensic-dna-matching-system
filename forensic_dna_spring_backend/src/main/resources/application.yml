@@ -1,8 +1,11 @@
+server:
+  port: 8000
+
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://db:5432/dna_forensics}
+    username: ${SPRING_DATASOURCE_USERNAME:dna_admin}
+    password: ${SPRING_DATASOURCE_PASSWORD:dna_admin}
 
   jpa:
     hibernate:
@@ -11,10 +14,7 @@ spring:
 
 jwt:
   secret: ${JWT_SECRET}
-  expiration: 7200000
-
-server:
-  port: ${PORT:8000}
+  expiration: ${JWT_EXPIRATION:7200000}
 
 springdoc:
   swagger-ui:
